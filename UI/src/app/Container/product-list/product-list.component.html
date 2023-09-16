@@ -1,0 +1,56 @@
+<!-- <div class="card-container">
+  <div *ngFor="let item of products" class="card" style="width: 18rem">
+    <img [src]="item.image" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ item.name }}</h5>
+      <p class="card-text">DisccountPrice:{{ getdiccountedprice() }}</p>
+      <p>Colore:{{ item.color }}</p>
+      <p>Disccount:{{ item.discount }}</p>
+      <p [ngStyle]="{ color: item.stock > 0 ? 'green' : 'red' }">
+        {{
+          item.stock > 0
+            ? "only " + item.stock + " left hurry up"
+            : " outof stock"
+        }}
+      </p>
+      <div style="display: flex; justify-content: space-around">
+        <button href="#" class="btn btn-primary" [disabled]="item.stock <= 0">
+          Buy Now
+        </button>
+        <div>
+          <button (click)="removecart(item.id)" class="btn btn-secondary">
+            -
+          </button>
+          <span style="padding: 7px">{{ item.AddTocart }}</span>
+          <button (click)="addcart(item.id)" class="btn btn-secondary">
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div>
+  <app-filtter
+    [All]="Allproducts"
+    [Available]="AvailableProducts"
+    [OutOfstock]="OutOfStock"
+    (SelectedFiltterButtonEventchange)="OnfilterChange($event)"
+  ></app-filtter>
+  <div class="product-container col-mb-3">
+    <ng-container *ngFor="let prod of products">
+      <!-- *ngIf="
+          filtertext === 'all' || prod.is_in_inventory.toString() === filtertext
+        " -->
+      <app-product
+        (click)="SelectedProduct = prod"
+        [product]="prod"
+        *ngIf="
+          searchproduct === '' ||
+          prod.name.toLowerCase().includes(searchproduct)
+        "
+      ></app-product>
+    </ng-container>
+  </div>
+</div>

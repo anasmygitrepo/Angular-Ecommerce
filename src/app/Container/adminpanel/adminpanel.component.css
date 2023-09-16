@@ -1,0 +1,9 @@
+#sidebarMenu {
+  width: 300px;
+  margin-left: 0px;
+}
+.container1 {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: row;
+}

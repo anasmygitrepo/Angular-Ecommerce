@@ -1,0 +1,8 @@
+.filter-container {
+  margin-left: 130px;
+  padding: 0px 17vh;
+  display: flex;
+}
+.filter-container div {
+  margin: 10px;
+}

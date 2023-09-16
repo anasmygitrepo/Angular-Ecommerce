@@ -1,0 +1,65 @@
+<form>
+  <mat-form-field class="formfield">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search Product"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+        [(ngModel)]="serchtext"
+        #serchinput
+      />
+      <mat-autocomplete style="background-color: white" #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+      <button
+        (click)="search(serchinput)"
+        type="button"
+        Class="btn btn-outline-secondary"
+        [disabled]="!serchtext"
+      >
+        Search
+      </button>
+    </div>
+
+    <div style="margin-left: 400px">
+      <ng-container *ngIf="!yoursearch; else searchtag">
+        <p>now your searching.......</p>
+      </ng-container>
+      <ng-template #searchtag>
+        <p>start serch...........</p>
+      </ng-template>
+    </div>
+    <!-- </mat-form-field>
+</form>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Number</mat-label>
+    <input
+      type="text"
+      placeholder="Pick one"
+      aria-label="Number"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form> -->
+  </mat-form-field>
+</form>
+<span style="margin-left: 400px">Serch result for : {{ serchtext }}</span>

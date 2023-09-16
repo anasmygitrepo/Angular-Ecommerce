@@ -1,0 +1,46 @@
+<div class="filter-container">
+  <div class="form-check">
+    <label class="form-check-label" for="flexRadioDefault1">
+      All: [{{ All }}]
+    </label>
+
+    <input
+      class="form-check-input"
+      type="radio"
+      name="flexRadioDefault"
+      id="flexRadioDefault1"
+      value="all"
+      [(ngModel)]="SelectedCheck"
+      (change)="change()"
+      checked
+    />
+  </div>
+  <div class="form-check">
+    <label class="form-check-label" for="flexRadioDefault2">
+      Available: [{{ Available }}]
+    </label>
+    <input
+      class="form-check-input"
+      type="radio"
+      name="flexRadioDefault"
+      id="flexRadioDefault2"
+      value="true"
+      [(ngModel)]="SelectedCheck"
+      (change)="change()"
+    />
+  </div>
+  <div class="form-check">
+    <label class="form-check-label" for="flexRadioDefault2">
+      OutOfstock: [{{ OutOfstock }}]
+    </label>
+    <input
+      class="form-check-input"
+      type="radio"
+      name="flexRadioDefault"
+      id="flexRadioDefault2"
+      value="false"
+      [(ngModel)]="SelectedCheck"
+      (change)="change()"
+    />
+  </div>
+</div>

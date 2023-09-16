@@ -1,0 +1,29 @@
+<app-search (serchtextevent)="search($event)"></app-search>
+
+<app-product-list #listproducts [searchproduct]="serchvalue"></app-product-list>
+
+<app-product-detail
+  (Cart)="GetCart($event)"
+  [selectedproduct]="ProductListComponent.SelectedProduct"
+  *ngIf="listproducts.SelectedProduct"
+></app-product-detail>
+
+<div class="futerproducts">
+  <div>
+    <h3>LATEST ARRIVALS</h3>
+    <h3 style="margin-top: 0px">IN POPULARBRANDS</h3>
+  </div>
+
+  <app-future-products>
+    <h2 class="tittle">New Arrival in Rebook</h2>
+    <button class="btn">Check arrivals in rebook</button>
+  </app-future-products>
+  <app-future-products>
+    <h2 class="tittle">New Arrival in Addidas</h2>
+    <button class="btn">Check arrivals in Adiddas</button>
+  </app-future-products>
+  <app-future-products>
+    <h2 class="tittle">New Arrival in Nike</h2>
+    <button class="btn">Check arrivals in Nike</button>
+  </app-future-products>
+</div>

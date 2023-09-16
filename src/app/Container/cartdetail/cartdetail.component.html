@@ -1,0 +1,213 @@
+<div class="container mt-5 p-3 rounded cart">
+  <div class="row no-gutters">
+    <div class="col-md-8">
+      <div class="product-details mr-2">
+        <div class="d-flex flex-row align-items-center">
+          <i class="fa fa-long-arrow-left"></i
+          ><button
+            [routerLink]="['/home']"
+            routerLinkActive="router-link-active"
+            class="btn btn-primary"
+          >
+            Continue Shopping
+          </button>
+          <button
+            style="margin-left: 550px"
+            [routerLink]="['/home']"
+            routerLinkActive="router-link-active"
+            class="btn btn-primary"
+            (click)="clearcart()"
+          >
+            ClearCart
+          </button>
+        </div>
+        <hr />
+        <h6 class="mb-0">Shopping cart</h6>
+        <div class="d-flex justify-content-between">
+          <span
+            >You have
+            <span style="font-weight: bolder">
+              {{ currentuserproducts.length }}</span
+            >
+            items in your cart</span
+          >
+          <div class="d-flex flex-row align-items-center">
+            <div class="price ml-2">
+              <span style="margin-right: 90px" class="mr-1">price</span>
+
+              <span style="margin-right: 130px" class="mr-1">Total</span>
+              <i class="fa fa-angle-down"></i>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let prod of currentuserproducts">
+          <div
+            class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded"
+          >
+            <div class="d-flex flex-row">
+              <img
+                style="width: 100px; height: 80px"
+                class="rounded"
+                src="{{ prod.image }}"
+                width="40"
+              />
+              <div class="ml-2">
+                <span
+                  style="margin-left: 10px"
+                  class="font-weight-bold d-block"
+                  >{{ prod.name }}</span
+                ><span style="margin-left: 10px" class="spec">{{
+                  prod.brand
+                }}</span>
+              </div>
+            </div>
+            <div
+              style="position: fixed; margin-left: 300px"
+              class="d-grid gap-2 d-md-block"
+            >
+              <button
+                (click)="reducecount(prod.price, prod.id)"
+                class="btn btn-primary"
+                type="button"
+              >
+                -
+              </button>
+              <span style="margin-left: 10px">{{ prod.AddTocart }}</span>
+              <button
+                (click)="addcount(prod.price, prod.id)"
+                class="btn btn-primary"
+                type="button"
+              >
+                +
+              </button>
+            </div>
+            <div
+              style="margin-left: 170px"
+              class="d-flex flex-row align-items-center"
+            >
+              <span class="d-block ml-5 font-weight-bold"></span>
+              <span style="margin-left: 100px"
+                >{{ prod.AddTocart }} x {{ prod.price }}
+              </span>
+              <span style="margin-left: 90px">
+                {{ prod.AddTocart * prod.price }} </span
+              ><i class="fa fa-trash-o ml-3 text-black-50"></i>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-trash3"
+              viewBox="0 0 16 16"
+              (click)="deleteCartItem(prod.id)"
+            >
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" style="margin-top: 50px; width: 430px">
+      <div class="payment-info">
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Card details</span
+          ><img
+            class="rounded"
+            src="https://i.imgur.com/WU501C8.jpg"
+            width="30"
+          />
+        </div>
+        <span class="type d-block mt-3 mb-1">Card type</span
+        ><label class="radio">
+          <input type="radio" name="card" value="payment" checked />
+          <span
+            ><img
+              width="30"
+              src="https://img.icons8.com/color/48/000000/mastercard.png"
+          /></span>
+        </label>
+
+        <label class="radio">
+          <input type="radio" name="card" value="payment" />
+          <span
+            ><img
+              width="30"
+              src="https://img.icons8.com/officel/48/000000/visa.png"
+          /></span>
+        </label>
+
+        <label class="radio">
+          <input type="radio" name="card" value="payment" />
+          <span
+            ><img
+              width="30"
+              src="https://img.icons8.com/ultraviolet/48/000000/amex.png"
+          /></span>
+        </label>
+
+        <label class="radio">
+          <input type="radio" name="card" value="payment" />
+          <span
+            ><img
+              width="30"
+              src="https://img.icons8.com/officel/48/000000/paypal.png"
+          /></span>
+        </label>
+        <div>
+          <label class="credit-card-label">Name on card</label
+          ><input
+            type="text"
+            class="form-control credit-inputs"
+            placeholder="Name"
+          />
+        </div>
+        <div>
+          <label class="credit-card-label">Card number</label
+          ><input
+            type="text"
+            class="form-control credit-inputs"
+            placeholder="0000 0000 0000 0000"
+          />
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="credit-card-label">Date</label
+            ><input
+              type="text"
+              class="form-control credit-inputs"
+              placeholder="12/24"
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="credit-card-label">CVV</label
+            ><input
+              type="text"
+              class="form-control credit-inputs"
+              placeholder="342"
+            />
+          </div>
+        </div>
+        <hr class="line" />
+        <div class="d-flex justify-content-between information">
+          <span>Subtotal</span><span>${{ Totalprice }}</span>
+        </div>
+        <div class="d-flex justify-content-between information">
+          <span>Shipping</span><span>$20.00</span>
+        </div>
+        <div class="d-flex justify-content-between information">
+          <span>Total(Incl. taxes)</span><span>${{ Totalprice + 20 }}</span>
+        </div>
+        <button
+          class="btn btn-primary btn-block d-flex justify-content-between mt-3"
+          type="button"
+        >
+          <span>${{ Totalprice + 20 }}.00</span
+          ><span>Checkout<i class="fa fa-long-arrow-right ml-1"></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

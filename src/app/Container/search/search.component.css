@@ -1,0 +1,20 @@
+/* .input-group {
+  width: 600px;
+  height: 50px;
+  margin-left: 500px;
+  margin-top: 30px;
+} */
+.input-group button {
+  background-color: rgb(104, 104, 195);
+  color: white;
+}
+input {
+  background-color: white;
+}
+.formfield {
+  background-color: white;
+  width: 600px;
+  margin-left: 450px;
+  height: 100px;
+  margin-top: 20px;
+}

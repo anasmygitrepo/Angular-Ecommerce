@@ -1,0 +1,43 @@
+img {
+  width: 100%;
+  height: 250px;
+}
+.card-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.ekart--product--item {
+  border: 1px solid rgb(233, 228, 228);
+  margin: 10px 10px;
+  padding: 10px;
+  padding-top: 10px;
+  cursor: pointer;
+  width: 290px;
+  padding-left: 10px;
+  transition: all ease-in-out 0.5s;
+}
+.ekart--product--item:hover {
+  box-shadow: 10px 10px 10px #cccccc;
+  transition: 0.4s;
+  transform: scale(1.1);
+}
+
+.ekart--add--to--price {
+  background-color: rgb(55, 50, 50);
+  color: white;
+  width: 100px;
+}
+.fa-regular:hover {
+  color: red;
+  cursor: pointer;
+}
+.ekart-wishlist-sale-containe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.ekart-on-sale-tag {
+  background-color: rgb(242, 190, 16);
+  padding: 5px;
+}

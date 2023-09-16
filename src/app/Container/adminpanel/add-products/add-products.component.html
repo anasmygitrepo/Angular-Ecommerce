@@ -1,0 +1,207 @@
+<div>
+  <div style="border: 1px solid rgb(234, 223, 223)" class="card">
+    <div>
+      <table class="maintable" class="table">
+        <thead>
+          <tr style="font-weight: bold">
+            <th scope="col">Brand</th>
+            <th scope="col">Name</th>
+            <th scope="col">stock</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Description</th>
+            <th scope="col">Available</th>
+            <th scope="col">Tax</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Colors</th>
+            <th scope="col">Images</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Listproducts"></tr>
+          <tr *ngFor="let line of this.Products.productsLine; let i = index">
+            <td>
+              <select
+                [(ngModel)]="line.brand"
+                style="width: 200px; margin-left: 7px; margin-top: 0px"
+                class="form-control"
+                id="exampleFormControlSelect1"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <i class="fas fa-calendar input-prefix"></i>
+                <option
+                  [value]="item.brand"
+                  [text]="item.name"
+                  *ngFor="let item of Listproducts"
+                >
+                  {{ item.brand }}
+                </option>
+              </select>
+            </td>
+
+            <td>
+              <input
+                [(ngModel)]="line.name"
+                type="text"
+                style="width: 70px"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <input
+                [(ngModel)]="line.stock"
+                type="number"
+                style="width: 70px"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <select
+                [(ngModel)]="line.gender"
+                style="width: 100px; margin-left: 7px; margin-top: 0px"
+                class="form-control"
+                id="exampleFormControlSelect1"
+                class="form-select"
+                aria-label="Default select example"
+              >
+                <option
+                  [text]="item.gender"
+                  [value]="item.gender"
+                  *ngFor="let item of genders"
+                  selected
+                >
+                  {{ item.gender }}
+                </option>
+              </select>
+            </td>
+            <td>
+              <form action="/action_page.php">
+                <textarea
+                  [(ngModel)]="line.description"
+                  id="w3review"
+                  name="w3review"
+                  rows="4"
+                  cols="50"
+                  class="form-control"
+                ></textarea>
+                <br />
+              </form>
+            </td>
+            <td>
+              <input
+                [(ngModel)]="line.is_in_inventory"
+                type="text"
+                style="width: 70px"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <input
+                [(ngModel)]="line.tax"
+                type="number"
+                style="width: 70px"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <input
+                [(ngModel)]="line.discount"
+                type="number"
+                style="width: 70px"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <input
+                [(ngModel)]="line.price"
+                type="number"
+                style="width: 70px"
+                class="form-control"
+              />
+            </td>
+            <td>
+              <ng-multiselect-dropdown
+                style="width: 150px; height: 50px; background-color: white"
+                class="form-control"
+                [placeholder]="'select color'"
+                [settings]="colorListsettings"
+                [data]="colorList"
+                [(ngModel)]="line.colors"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+              >
+              </ng-multiselect-dropdown>
+              <!-- <select
+                multiple
+                (change)="pushcolore($event)"
+                style="width: 100px; margin-left: 7px; margin-top: 0px"
+                class="form-control"
+                id="exampleFormControlSelect1"
+                class="form-select"
+                aria-label="Default select example"
+                se="select colore"
+              >
+                <option
+                  [text]="item.color"
+                  [value]="item.color"
+                  *ngFor="let item of colors"
+                  selected
+                >
+                  {{ item.color }}
+                </option>
+              </select> -->
+            </td>
+            <td>
+              <input
+                type="file"
+                name="images"
+                (change)="onFileChanged($event)"
+                #fileInput
+                multiple="multiple"
+                class="form-control"
+                style="width: 100px; text-align: center"
+              />
+              <!-- <input
+                multiple
+                [(ngModel)]="line.image"
+                type="file"
+                class="form-control"
+                style="width: 100px; text-align: center"
+
+                /> -->
+            </td>
+
+            <td>
+              <button class="btn btn-danger" (click)="remove()">remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        "
+      >
+        <button
+          style="margin-left: 20px"
+          class="btn btn-success"
+          (click)="add()"
+        >
+          Add another product +
+        </button>
+        <input
+          style="margin-right: 40px"
+          type="submit"
+          (click)="AddInvoice()"
+          name="save products"
+          class="btn btn-info btn-md"
+          value="save products"
+        />
+      </div>
+    </div>
+  </div>
+</div>

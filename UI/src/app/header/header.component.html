@@ -1,0 +1,119 @@
+<nav style="height: 100px" class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Ecart</a>
+    <app-topmenu style="margin-left: 200px"></app-topmenu>
+    <div
+      style="margin-left: 200px; margin-top: 40px"
+      class="collapse navbar-collapse"
+      id="navbarTogglerDemo02"
+    >
+      <ul id="NAV" class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink=""
+            class="nav-link active"
+            aria-current="page"
+            >HOME</a
+          >
+        </li>
+        <li class="nav-item">
+          <a [routerLinkActive]="'active'" class="nav-link" href="#"
+            >PRODUCTS</a
+          >
+        </li>
+        <li class="nav-item">
+          <a [routerLinkActive]="'active'" routerLink="about" class="nav-link"
+            >ABOUT</a
+          >
+        </li>
+        <li class="nav-item">
+          <a [routerLinkActive]="'active'" routerLink="contact" class="nav-link"
+            >CONTACT</a
+          >
+        </li>
+      </ul>
+      <!-- <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </form> -->
+      <div
+        *ngIf="login && user != 'admin'"
+        style="margin-right: 30px; margin-bottom: 15px"
+      >
+        <p
+          *ngIf="Actualcartcount; else defaultcartval"
+          style="
+            margin-bottom: 0px;
+            background-color: rgb(94, 188, 94);
+            border-color: transparent;
+            border-radius: 20px;
+            width: 25px;
+            padding: 4px;
+            margin-left: 10px;
+            font-weight: bolder;
+            text-align: center;
+          "
+        >
+          {{ currentUserCart.length }}
+        </p>
+        <ng-template #defaultcartval>
+          <p
+            style="
+              margin-bottom: 0px;
+              background-color: rgb(94, 188, 94);
+              border-color: transparent;
+              border-radius: 20px;
+              width: 25px;
+              padding: 4px;
+              margin-left: 10px;
+              font-weight: bolder;
+              text-align: center;
+            "
+          >
+            0
+          </p>
+        </ng-template>
+        <i [routerLink]="['cart']" class="fa fa-shopping-cart"></i>
+      </div>
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <div *ngIf="login; else logout" class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Welcome {{ username }}
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Edit profile</a></li>
+              <li>
+                <a (click)="logouts()" class="dropdown-item" href="#">Logout</a>
+              </li>
+            </ul>
+          </div>
+          <ng-template #logout>
+            <div>
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Login/Signin
+              </button>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

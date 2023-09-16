@@ -1,0 +1,92 @@
+<div *ngIf="showproduct" class="ekart--product--details--info scroll">
+  <div class="ekart-product-detail-close">
+    <i (click)="close()" class="fa fa-times" aria-hidden="true"></i>
+  </div>
+  <div class="ekart-product-detail-image">
+    <img src="{{ product.image }}" class="ekart-product-detail-image" />
+  </div>
+
+  <div class="ekart-product-detail">
+    <div class="ekart-product-detail-name">
+      <h2>{{ product.name }}</h2>
+    </div>
+    <div class="ekart-product-detail-gbc">
+      <span appSetbackground>{{ product.gender }}</span>
+      <span appSetbackground>{{ product.brand }}</span>
+      <span appSetbackground>{{ product.category }}</span>
+    </div>
+    <div class="ekart-product-detail-price">
+      <p>
+        <b>Price Each Pair:</b>
+        <span
+          *ngIf="product.discount"
+          style="background-color: red; color: white"
+          ><s>${{ product.discount }}</s></span
+        >
+        <span style="background-color: green; color: white"
+          >${{ product.price }}</span
+        >
+        (Inclusive of all taxes)
+      </p>
+    </div>
+    <div class="ekart-product-detail-size">
+      <div style="padding: 5px 0px; border-bottom: #ccc 2px solid">
+        <h4>Available Size</h4>
+      </div>
+      <div style="display: flex; flex-direction: row">
+        <div *ngFor="let siz of product.size" style="margin-top: 20px">
+          <span
+            style="margin-left: 5px"
+            class="ekart-product-detail-available-size"
+            >{{ siz }}</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="ekart-product-detail-color">
+      <div style="padding: 5px 0px; border-bottom: #ccc 2px solid">
+        <h4>Available Color</h4>
+      </div>
+      <div style="display: flex; flex-direction: row">
+        <div *ngFor="let color of product.colors" style="margin-top: 20px">
+          <span
+            class="ekart-product-detail-available-color"
+            [ngStyle]="{ 'background-color': color }"
+          ></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ekart-product-detail-desc">
+      <div style="padding: 5px 0px; border-bottom: #ccc 2px solid">
+        <h4>Product Description</h4>
+      </div>
+      <div style="margin-top: 20px">
+        <p>DESCRIPTION</p>
+      </div>
+    </div>
+  </div>
+  <div class="ekart-product-detail-addtoCart">
+    <button
+      *ngIf="product.is_in_inventory; else notifayme"
+      class="btn-add-to-cart"
+      (click)="AddTocart(product)"
+    >
+      ADD TO CART
+    </button>
+
+    <button
+      *ngIf="product.is_in_inventory; else notifayme"
+      class="btn-add-to-cart"
+      (click)="ClearCart()"
+      style="margin-left: 5px"
+    >
+      ClEAR CART
+    </button>
+  </div>
+  <ng-template #notifayme>
+    <button class="btn-add-to-cart">NOTYFY ME</button>
+  </ng-template>
+</div>
+<div *ngIf="showproduct" class="overlay"></div>
