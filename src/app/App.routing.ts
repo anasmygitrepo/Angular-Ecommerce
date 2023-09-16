@@ -34,6 +34,10 @@ export const Approute: Routes = [
     component: CartdetailComponent,
   },
   {
+    path: '#',
+    component: MaincontainerComponent,
+  },
+  {
     path: 'about',
     component: AboutComponent,
   },
